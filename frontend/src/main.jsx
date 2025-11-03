@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { ClerkProvider } from '@clerk/clerk-react'
+import { BrowserRouter } from 'react-router'
 
 // Import your Clerk publishable key (check for the key, if not found, throw an error)
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY // instead of process.env, In vite we use import.meta.env
@@ -14,8 +15,10 @@ if (!PUBLISHABLE_KEY) {
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     {/* Wrap your app with ClerkProvider {so that in the application we can use compounds coming from Clerk}, if key is found. */}
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY}> 
-      <App />
+    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
     </ClerkProvider>
   </StrictMode>,
 )
