@@ -141,12 +141,12 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  background: linear-gradient(135deg, #c9c9c9a4 0%, #390f77 50%, #3b206c 75%, #0c0c0c 100%);
+  background: linear-gradient(135deg, #c9c9c9a4 0%, #390f77 50%, #512c97 75%, #401550 100%);
   color: rgb(233, 231, 232);
   font-size: 1.125rem;
-  font-weight: 600;
+  font-weight: 800;
   padding: 1.25rem 2.5rem;
-  border-radius: 1rem;
+  border-radius: 1.5rem;
   border: 1px solid rgba(82, 45, 119, 0.659);
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
