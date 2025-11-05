@@ -5,7 +5,8 @@ import { connectDB } from './config/db.js';
 import { clerkMiddleware } from '@clerk/express';
 import { inngest, functions } from './config/inngest.js';
 import { serve } from 'inngest/express';
-import chatRoutes from './routes/chat.route.js'
+import chatRoutes from './routes/chat.route.js';
+import cors from 'cors';
 import * as Sentry from "@sentry/node";
 
 
@@ -15,6 +16,7 @@ const app = express();
 const PORT = ENV.PORT;
 
 app.use(express.json());
+app.use(cors({origin: "http://localhost:5173",  credentials: true}));
 app.use(clerkMiddleware()); // Use Clerk middleware to handle authentication, sessions, and user management. app.use() -> Middleware function in Express.js to process incoming requests.
 // req.auth will be available in all routes after this middleware, which helps in identifying authenticated users.
 
