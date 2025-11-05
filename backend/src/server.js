@@ -16,7 +16,7 @@ const app = express();
 const PORT = ENV.PORT;
 
 app.use(express.json());
-app.use(cors({origin: "http://localhost:5173",  credentials: true}));
+app.use(cors({origin: ENV.CLIENT_URL,  credentials: true}));
 app.use(clerkMiddleware()); // Use Clerk middleware to handle authentication, sessions, and user management. app.use() -> Middleware function in Express.js to process incoming requests.
 // req.auth will be available in all routes after this middleware, which helps in identifying authenticated users.
 
