@@ -9,22 +9,28 @@ import HomePage from './pages/HomePage';
 const SentryRoutes = Sentry.withSentryReactRouterV7Routing(Routes);
 
 const App = () => {
-  const { isSignedIn, isLoaded } = useAuth()
-   
-  if(!isLoaded) return null;
+  const { isSignedIn, isLoaded } = useAuth();
+
+  if (!isLoaded) return null;
 
   return (
-
     <SentryRoutes>
-      <Route path="/" element={isSignedIn ? <HomePage /> : <Navigate to={"/auth"} replace />} /> {/* After signIn we will be directed to HomePage */}
-      <Route path="/auth" element={!isSignedIn ? <AuthPage /> : <Navigate to={"/"} replace />} /> {/* If the user is signed in he can't go back to the auth page, if he tries then it will redirect/Navigate it to home page instead */}
+      <Route path="/" element={isSignedIn ? <HomePage /> : <Navigate to={"/auth"} replace />} />
+      <Route path="/auth" element={!isSignedIn ? <AuthPage /> : <Navigate to={"/"} replace />} />
 
-      <Route path="/call/:id" element={isSignedIn ? <CallPage /> : <Navigate to={"/auth"} replace /> } /> {/* If the user is signed in (dynamic route) to redirect it the called page, or redirect to the old page if they are not signed up*/}
-      <Route path="*" element={isSignedIn ? <Navigate to={"/"} replace /> : <Navigate to={"/auth"} replace />} /> {/* If the user is not signed in he can't go to the any page, if he tries then it will redirect/Navigate it to Auth page instead */}
+      <Route
+        path="/call/:id"
+        element={isSignedIn ? <CallPage /> : <Navigate to={"/auth"} replace />}
+      />
+
+      <Route
+        path="*"
+        element={isSignedIn ? <Navigate to={"/"} replace /> : <Navigate to={"/auth"} replace />}
+      />
     </SentryRoutes>
-
   );
-}
+};
+
 export default App;
 
 
